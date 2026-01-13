@@ -1,0 +1,18 @@
+function groupAnagrams(strs) {
+  const map = new Map();
+
+  for (let s of strs) {
+    // Kunci sorting: 'eat' -> 'aet'
+    const key = s.split('').sort().join('');
+    
+    if (!map.has(key)) {
+      map.set(key, []);
+    }
+    map.get(key).push(s);
+  }
+
+  return Array.from(map.values());
+}
+
+console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]));
+console.log(groupAnagrams([""]));
